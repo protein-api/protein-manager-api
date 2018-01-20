@@ -23,6 +23,7 @@ public class ProteinaDAOImpl extends AbstractGenericDAOImpl<Proteina> implements
         query.setParameter("search","%"+search+"%");
         query.setParameter("startWith",search+"%");
         query.setParameter("literal",search);
+
         return  ((List<Proteina>)query.list().stream().distinct().collect(Collectors.toList()));
     }
 
