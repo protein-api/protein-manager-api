@@ -25,20 +25,33 @@ public class ProteinaController {
     @RequestMapping( method = RequestMethod.POST)
     public ResponseEntity<Proteina> add(@RequestBody Proteina proteina){
         Proteina result = proteinaService.save(proteina);
-        return new ResponseEntity<Proteina>(result, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @RequestMapping( method = RequestMethod.GET)
+/*    @RequestMapping( method = RequestMethod.GET)
     public ResponseEntity<List<Proteina>> list(@RequestParam("search") String search){
         List<Proteina> result = proteinaService.list(search);
-        return new ResponseEntity<List<Proteina>>(result, HttpStatus.OK);
-    }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }*/
 
     @RequestMapping(path = "/{idProteina}",method = RequestMethod.GET)
     public ResponseEntity<Proteina>get(@PathVariable Long idProteina){
         Proteina result = proteinaService.get(idProteina);
-        return  new ResponseEntity<Proteina>(result,HttpStatus.OK);
+        return  new ResponseEntity<>(result,HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    public ResponseEntity<List<Proteina>> getAll() {
+        List<Proteina> result = proteinaService.getAll();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<Proteina>> findBy(@RequestParam("search") String search){
+        List<Proteina> result = proteinaService.findByNameOrUniprot(search);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
 
 
     @RequestMapping(

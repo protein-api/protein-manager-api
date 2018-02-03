@@ -13,4 +13,6 @@ public interface ProteinaService extends GenericService<Proteina> {
      List<Proteina> list(String search);
      Proteina get(Long idProteina);
      Proteina addEnlace(Long idProteina, Enlace enlace);
+    List<Proteina> getAll();
+    List<Proteina> findByNameOrUniprot(String search);
 }

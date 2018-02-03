@@ -24,7 +24,7 @@ public class ProteinaDAOImpl extends AbstractGenericDAOImpl<Proteina> implements
         query.setParameter("startWith",search+"%");
         query.setParameter("literal",search);
 
-        return  ((List<Proteina>)query.list().stream().distinct().collect(Collectors.toList()));
+        return (List<Proteina>) query.list().stream().distinct().collect(Collectors.toList());
     }
 
     @Override
@@ -32,4 +32,24 @@ public class ProteinaDAOImpl extends AbstractGenericDAOImpl<Proteina> implements
         this.sessionFactory.openSession().merge(proteina);
         return (Proteina) this.sessionFactory.openSession().merge(proteina);
     }
+
+    @Override
+    public List<Proteina> getAll() {
+        Query query = this.sessionFactory.openSession().createSQLQuery("" +
+                "SELECT * FROM proteina")
+                .addEntity(Proteina.class);
+        return (List<Proteina>) query.list().stream().distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Proteina> findByNameOrUniprot(String search) {
+        Query query = this.sessionFactory.openSession().createSQLQuery("" +
+                "SELECT * FROM proteina " +
+                "WHERE proteina.nombre like :nameOrUniprot OR proteina.codigo_uni_prot like :nameOrUniprot")
+                .addEntity(Proteina.class);
+        query.setParameter("nameOrUniprot", "%"+search+"%");
+        return (List<Proteina>) query.list().stream().distinct().collect(Collectors.toList());
+    }
+
+
 }

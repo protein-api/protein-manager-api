@@ -11,6 +11,6 @@ public interface ProteinaDAO extends GenericDAO<Proteina> {
 
     List<Proteina> list(String search);
     Proteina merge(Proteina proteina);
-
-
+    List<Proteina> getAll();
+    List<Proteina> findByNameOrUniprot(String search);
 }
