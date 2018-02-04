@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController()
-@RequestMapping("/proteina")
+@RequestMapping("/proteins")
 public class ProteinaController {
 
     @Autowired
@@ -40,14 +40,14 @@ public class ProteinaController {
         return  new ResponseEntity<>(result,HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    @RequestMapping(path = "/getAll", method = RequestMethod.GET)
     public ResponseEntity<List<Proteina>> getAll() {
         List<Proteina> result = proteinaService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Proteina>> findBy(@RequestParam("search") String search){
+    @RequestMapping(path = "/search/{search}",method = RequestMethod.GET)
+    public ResponseEntity<List<Proteina>> findBy(@PathVariable String search){
         List<Proteina> result = proteinaService.findByNameOrUniprot(search);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
