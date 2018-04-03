@@ -34,7 +34,7 @@ public class ProteinaController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }*/
 
-    @RequestMapping(path = "/{idProteina}",method = RequestMethod.GET)
+    @RequestMapping(path = "/get/{idProteina}", method = RequestMethod.GET)
     public ResponseEntity<Proteina>get(@PathVariable Long idProteina){
         Proteina result = proteinaService.get(idProteina);
         return  new ResponseEntity<>(result,HttpStatus.OK);
