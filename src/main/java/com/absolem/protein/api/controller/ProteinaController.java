@@ -28,12 +28,6 @@ public class ProteinaController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-/*    @RequestMapping( method = RequestMethod.GET)
-    public ResponseEntity<List<Proteina>> list(@RequestParam("search") String search){
-        List<Proteina> result = proteinaService.list(search);
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }*/
-
     @RequestMapping(path = "/get/{idProteina}", method = RequestMethod.GET)
     public ResponseEntity<Proteina>get(@PathVariable Long idProteina){
         Proteina result = proteinaService.get(idProteina);

@@ -7,21 +7,24 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "sitios_activos")
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"proteina"})
 public class SitioActivo implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Column
+    @Column(name = "proteina_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 1024)
-    private String valor;
-    @Column
-    private  TipoSitioActivo tipo;
-    @ManyToOne
-    @JoinColumn(name= "proteina_id")
+
+    @Column(name = "Sitio_act_can", length = 1024)
+    private String sitiosActCan;
+
+    @Column(name = "Sitio_act_prom", length = 1024)
+    private String sitiosActProm;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
     private Proteina proteina;
 
     public Long getId() {
@@ -32,27 +35,27 @@ public class SitioActivo implements Serializable{
         this.id = id;
     }
 
-    public String getValor() {
-        return valor;
-    }
-
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-
-    public TipoSitioActivo getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoSitioActivo tipo) {
-        this.tipo = tipo;
-    }
-
     public Proteina getProteina() {
         return proteina;
     }
 
     public void setProteina(Proteina proteina) {
         this.proteina = proteina;
+    }
+
+    public String getSitiosActCan() {
+        return sitiosActCan;
+    }
+
+    public void setSitiosActCan(String sitiosActCan) {
+        this.sitiosActCan = sitiosActCan;
+    }
+
+    public String getSitiosActProm() {
+        return sitiosActProm;
+    }
+
+    public void setSitiosActProm(String sitiosActProm) {
+        this.sitiosActProm = sitiosActProm;
     }
 }

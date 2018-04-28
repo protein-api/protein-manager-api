@@ -44,8 +44,8 @@ public class Proteina implements Serializable {
     @OneToMany (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
     private List<EstructuraPDB> estructurasPDB;
 
-    @OneToMany (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
-    private List<SitioActivo> sitiosActivo;
+    @OneToOne (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
+    private SitioActivo sitiosActivo;
 
 
     public Long getId() {
@@ -129,11 +129,11 @@ public class Proteina implements Serializable {
         this.estructurasPDB = estructurasPDB;
     }
 
-    public List<SitioActivo> getSitiosActivo() {
+    public SitioActivo getSitiosActivo() {
         return sitiosActivo;
     }
 
-    public void setSitiosActivo(List<SitioActivo> sitiosActivo) {
+    public void setSitiosActivo(SitioActivo sitiosActivo) {
         this.sitiosActivo = sitiosActivo;
     }
 }
