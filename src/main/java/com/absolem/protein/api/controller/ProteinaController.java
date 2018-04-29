@@ -40,12 +40,23 @@ public class ProteinaController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/search/{search}",method = RequestMethod.GET)
+    @RequestMapping(path = "/search/{search}", method = RequestMethod.GET)
     public ResponseEntity<List<Proteina>> findBy(@PathVariable String search){
         List<Proteina> result = proteinaService.findByNameOrUniprot(search);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/searchByReaction/{search}", method = RequestMethod.GET)
+    public ResponseEntity<List<Proteina>> searchByReaction(@PathVariable String search){
+        List<Proteina> result = proteinaService.searchByReaction(search);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/searchByOrganism/{search}", method = RequestMethod.GET)
+    public ResponseEntity<List<Proteina>> searchByOrganism(@PathVariable String search){
+        List<Proteina> result = proteinaService.searchByOrganism(search);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 
 
     @RequestMapping(

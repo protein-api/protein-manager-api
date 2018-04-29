@@ -38,7 +38,17 @@ public class ProteinaServiceImpl extends AbstractGenericServiceImpl<Proteina,Pro
 
     @Override
     public List<Proteina> findByNameOrUniprot(String search) {
-        return getGenericDAO().findByNameOrUniprot(search);
+        return this.getGenericDAO().findByNameOrUniprot(search);
+    }
+
+    @Override
+    public List<Proteina> searchByReaction(String search) {
+        return this.getGenericDAO().searchByReaction(search);
+    }
+
+    @Override
+    public List<Proteina> searchByOrganism(String search) {
+        return this.getGenericDAO().searchByOrganism(search);
     }
 
     public Proteina get(Long id){

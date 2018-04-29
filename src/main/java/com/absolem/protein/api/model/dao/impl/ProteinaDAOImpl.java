@@ -45,9 +45,25 @@ public class ProteinaDAOImpl extends AbstractGenericDAOImpl<Proteina> implements
     public List<Proteina> findByNameOrUniprot(String search) {
         Query query = this.sessionFactory.openSession().createSQLQuery("" +
                 "SELECT * FROM proteina " +
-                "WHERE proteina.nombre like :nameOrUniprot OR proteina.codigo_uni_prot like :nameOrUniprot")
+                "WHERE proteina.nombre LIKE :nameOrUniprot OR proteina.codigo_uni_prot LIKE :nameOrUniprot")
                 .addEntity(Proteina.class);
         query.setParameter("nameOrUniprot", "%"+search+"%");
+        return (List<Proteina>) query.list().stream().distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Proteina> searchByReaction(String search) {
+        Query query = this.sessionFactory.openSession().createSQLQuery("SELECT * FROM proteina JOIN reaccion ON proteina.id = reaccion.proteina_id WHERE reaccion.nombre LIKE :searchR")
+                .addEntity(Proteina.class);
+        query.setParameter("searchR", "%"+search+"%");
+        return (List<Proteina>) query.list().stream().distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Proteina> searchByOrganism(String search) {
+        Query query = this.sessionFactory.openSession().createSQLQuery("SELECT * FROM proteina WHERE proteina.organismo LIKE :organism")
+                .addEntity(Proteina.class);
+        query.setParameter("organism", "%"+search+"%");
         return (List<Proteina>) query.list().stream().distinct().collect(Collectors.toList());
     }
 
