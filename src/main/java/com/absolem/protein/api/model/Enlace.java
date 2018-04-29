@@ -25,7 +25,7 @@ public class Enlace {
     private String link;
 
     @Column
-    private TipoEnlace tipo;
+    private String tipo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "proteina_id")
@@ -72,7 +72,11 @@ public class Enlace {
         this.proteina = proteina;
     }
 
-    public TipoEnlace getTipo() {        return tipo;    }
+    public String getTipo() {
+        return tipo;
+    }
 
-    public void setTipo(TipoEnlace tipo) {        this.tipo = tipo;    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }
