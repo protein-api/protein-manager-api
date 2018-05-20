@@ -20,7 +20,7 @@ public class EstructuraPDB {
     @Column
     private String codigo;
 
-    @Column
+    @Column(length = 2500)
     private String url;
 
     @ManyToOne
