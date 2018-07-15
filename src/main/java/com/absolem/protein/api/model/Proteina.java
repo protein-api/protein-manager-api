@@ -41,7 +41,7 @@ public class Proteina implements Serializable {
     @OneToMany (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
     private List<Reaccion> reacciones;
 
-    @OneToMany (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "proteina")
     private List<EstructuraPDB> estructurasPDB;
 
     @OneToOne (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
@@ -103,7 +103,6 @@ public class Proteina implements Serializable {
     public void setCodigoKegg(String codigoKegg) {
         this.codigoKegg = codigoKegg;
     }
-
 
     public List<Reaccion> getReacciones() {
         return reacciones;

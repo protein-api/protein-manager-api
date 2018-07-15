@@ -9,7 +9,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"proteina"})
 public class EstructuraPDB {
 
     @Id
@@ -20,11 +19,11 @@ public class EstructuraPDB {
     @Column
     private String codigo;
 
-    @Column(length = 2500)
+    @Column
     private String url;
 
-    @ManyToOne
-    @JoinColumn(name= "proteina_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "proteina_id")
     private Proteina proteina;
 
     public Long getId() {
