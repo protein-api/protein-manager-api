@@ -38,6 +38,8 @@ public class Reaccion {
     @OneToMany (mappedBy = "reaccion",cascade = { CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
     private List<Cinetica> cineticas;
 
+    @Column
+    private String notes;
 
 
     public Long getId() {
@@ -94,5 +96,13 @@ public class Reaccion {
 
     public void setCineticas(List<Cinetica> cineticas) {
         this.cineticas = cineticas;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

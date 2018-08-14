@@ -47,6 +47,9 @@ public class Proteina implements Serializable {
     @OneToOne (mappedBy = "proteina",cascade ={ CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE },fetch = FetchType.LAZY)
     private SitioActivo sitiosActivo;
 
+    @Column
+    private String notes;
+
 
     public Long getId() {
         return id;
@@ -134,5 +137,13 @@ public class Proteina implements Serializable {
 
     public void setSitiosActivo(SitioActivo sitiosActivo) {
         this.sitiosActivo = sitiosActivo;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
