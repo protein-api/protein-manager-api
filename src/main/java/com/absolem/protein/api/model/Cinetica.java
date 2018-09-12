@@ -38,6 +38,14 @@ public class Cinetica {
     @JoinTable(name="moleculas_similares", joinColumns=@JoinColumn(name="cinetica_id"), inverseJoinColumns=@JoinColumn(name="molecula_id"))
     private List<Molecula> moleculasSimilares;
 
+    @Column(name= "parejita_id")
+    private Long parejitaId;
+
+    @Column(name= "proteina_id")
+    private Long proteinaId;
+
+
+
     public Long getId() {
         return id;
     }
@@ -100,5 +108,21 @@ public class Cinetica {
 
     public void setMoleculasSimilares(List<Molecula> moleculasSimilares) {
         this.moleculasSimilares = moleculasSimilares;
+    }
+
+    public Long getParejitaId() {
+        return parejitaId;
+    }
+
+    public void setParejitaId(Long parejitaId) {
+        this.parejitaId = parejitaId;
+    }
+
+    public Long getProteinaId() {
+        return proteinaId;
+    }
+
+    public void setProteinaId(Long proteinaId) {
+        this.proteinaId = proteinaId;
     }
 }

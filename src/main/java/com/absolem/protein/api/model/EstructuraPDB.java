@@ -26,6 +26,13 @@ public class EstructuraPDB {
     @JoinColumn(name = "proteina_id")
     private Proteina proteina;
 
+    @Column(name = "sitio_act_can", length = 2048)
+    private String sitiosActCan;
+
+    @Column(name = "sitio_act_prom", length = 2048)
+    private String sitiosActProm;
+
+
     public Long getId() {
         return id;
     }
@@ -48,5 +55,21 @@ public class EstructuraPDB {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getSitiosActCan() {
+        return sitiosActCan;
+    }
+
+    public void setSitiosActCan(String sitiosActCan) {
+        this.sitiosActCan = sitiosActCan;
+    }
+
+    public String getSitiosActProm() {
+        return sitiosActProm;
+    }
+
+    public void setSitiosActProm(String sitiosActProm) {
+        this.sitiosActProm = sitiosActProm;
     }
 }

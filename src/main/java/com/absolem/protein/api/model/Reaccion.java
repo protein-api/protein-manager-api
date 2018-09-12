@@ -25,7 +25,7 @@ public class Reaccion {
     private String descripcion;
 
     @Column
-    private TipoReaccion tipo;
+    private String tipo;
 
     @Column
     private String ec;
@@ -66,11 +66,11 @@ public class Reaccion {
         this.descripcion = descripcion;
     }
 
-    public TipoReaccion getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoReaccion tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
