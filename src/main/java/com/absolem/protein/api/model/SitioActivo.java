@@ -23,7 +23,7 @@ public class SitioActivo implements Serializable{
     private String sitiosActProm;
 
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @JoinColumn(name= "proteina_id")
     private Proteina proteina;
 
     public Long getId() {
